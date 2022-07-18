@@ -38,3 +38,5 @@ permalink: /rev/
 Input gets mangled somehow...
 > each jump happens once 
 
+> need to find what `cdqe` and `movzx` do
+
