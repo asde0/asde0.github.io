@@ -8,11 +8,11 @@ permalink: /shells/
 ## stabilisation
 
 >```bash
-python -c 'import pty; pty.spawn("/bin/bash")'
+python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 followed by
 ```bash
-python -c 'import os; os.system("/bin/bash")'
+python3 -c 'import os; os.system("/bin/bash")'
 ```
 (shell still terminates with `Ctrl+C`)
 
@@ -39,10 +39,6 @@ $ python -c 'print(open("/root/root.txt").read())'
 finding such SUIDs
 
 >```bash
-find / -perm -u=s -typef 2>dev/null
-```
-_or_
-```bash
 find / -perm /4000 2>dev/null
 ```
 
