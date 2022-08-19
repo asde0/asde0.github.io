@@ -39,7 +39,7 @@ $ python -c 'print(open("/root/root.txt").read())'
 finding such SUIDs
 
 >```bash
-find / -perm /4000 2>dev/null
+find / -perm /4000 2>/dev/null
 ```
 
 
