@@ -1,10 +1,10 @@
 ```
 Our infrastructure is under attack! The HMI interface went offline and we lost control of some critical PLCs in our ICS system. Moments after the attack started we managed to identify the target but did not have time to respond. The water storage facility's high/low sensors are corrupted thus setting the PLC into a halt state. We need to regain control and empty the water tank before it overflows. Our field operative has set a remote connection directly with the serial network of the system.
 ```
+![Pasted image 20230828215353](https://github.com/asde0/asde0.github.io/assets/86926081/61a3e90a-eebf-4a76-8f7e-e7b376515824)
 
-![[Pasted image 20230828215353.png]]
+![Pasted image 20230828215026](https://github.com/asde0/asde0.github.io/assets/86926081/11775ffb-ef4f-47c9-88b6-ae6ce4d59408)
 
-![[Pasted image 20230828215026.png]]
 
 
 ### Approach
@@ -103,8 +103,7 @@ Here is an example of a request to write coil 173 ON in slave device 17:
 |Total Bytes|8|17|
 https://www.modbustools.com/modbus.html#function05
 
-![[Pasted image 20230828225736.png]]
-
+![Pasted image 20230828225736](https://github.com/asde0/asde0.github.io/assets/86926081/e4a5f08e-1bca-4fcd-96b0-3d7dcb091358)
 
 Setting `manual_mode_control` to 1:
 
@@ -139,11 +138,11 @@ Trying to make `in_valve` 0 through the above doesn't work.
 
 Hmmm...
 
-![[Pasted image 20230828230607.png]]
+![Pasted image 20230828230607](https://github.com/asde0/asde0.github.io/assets/86926081/b86d5426-372f-49e3-bf73-81f638223273)
 
 Since `manual_mode` is activated, need to enable `cutoff_in` to disable `in_valve`.
 
-![[Pasted image 20230828230751.png]]
+![Pasted image 20230828230751](https://github.com/asde0/asde0.github.io/assets/86926081/fbcd3fc2-92ef-4749-a3b7-b78e7b640a97)
 
 ```
 {"auto_mode": 0, "manual_mode": 1, "stop_out": 0, "stop_in": 1, "low_sensor": 0, "high_sesnor": 0, "in_valve": 0, "out_valve": 0, "flag": "HTB{}"}
@@ -151,7 +150,7 @@ Since `manual_mode` is activated, need to enable `cutoff_in` to disable `in_valv
 
 Need to enable `out_valve` now.
 
-![[Pasted image 20230828231134.png]]
+![Pasted image 20230828231134](https://github.com/asde0/asde0.github.io/assets/86926081/a1c79354-c89f-4649-9d5b-df1c5d913695)
 
 Enabling `force_start_out` should do the trick.
 
@@ -163,7 +162,7 @@ Modbus command sent to the network!
 2. Send modbus command
 3. Exit
 Select: 1
-{"auto_mode": 0, "manual_mode": 1, "stop_out": 0, "stop_in": 1, "low_sensor": 0, "high_sesnor": 0, "in_valve": 0, "out_valve": 1, "flag": "HTB{14dd32_1091c_15_7h3_1091c_c12cu175_f02_1ndu572141_5y573m5}"}
+{"auto_mode": 0, "manual_mode": 1, "stop_out": 0, "stop_in": 1, "low_sensor": 0, "high_sesnor": 0, "in_valve": 0, "out_valve": 1, "flag": "HTB{14dd32_1091c_15_7h3_1091c_c12cu175_f02_xxxxxxxxxx_5y573m5}"}
 
 ```
 
