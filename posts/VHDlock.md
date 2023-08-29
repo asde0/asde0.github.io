@@ -76,11 +76,11 @@ It seems to be `110011` = 51
 `in_1` = 5, `in_2` = 4
 
 `xor_key` = `0000000000010001` ⊕ `100000`
-		also, `0000000000100001` ⊕ `10000`
+	also, `0000000000100001` ⊕ `10000`
 
 Key is now `110001`
 
-Same for `B` as `T`.
+Same key for `B` as `T`.
 
 So key might change at each turn. A quick way to find changes would be to xor `in_1` and `in_2`.
 
